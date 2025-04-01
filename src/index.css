@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+  body {
+    background-color: #0C1844;
+    width: 100vw;
+    overflow-x: hidden;
+    font-family: "Montserrat", sans-serif;
+  }
