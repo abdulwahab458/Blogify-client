@@ -1,6 +1,4 @@
 
-console.log("mongo url :",process.env.MONGO)
-console.log("webhook secret:",process.env.CLERK_WEBHOOK_SECRET)
 import express, { response } from "express"
 import connectDb from "./lib/connectDB.js"
 import userRouter from "./routes/users.route.js"
@@ -13,8 +11,8 @@ import cors from "cors"
 
 const app = express()
 const port = 3000
-// app.use('/comments', requireAuth(), commentRouter);
 app.use(cors(process.env.CLIENT_URL));
+// app.use('/comments', requireAuth(), commentRouter);
 app.use(clerkMiddleware())
 app.use('/webhooks',webhookRouter)
 app.use(express.json())
