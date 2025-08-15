@@ -76,8 +76,8 @@ const Writepage = () => {
 
   if (isLoaded && !isSignedIn) {
     return (
-      <div className="flex flex-col justify-center items-center h-screen bg-gradient-to-br from-[#32012F] to-[#4A0245]">
-        <div className="text-2xl font-semibold text-white mb-4">Please Login First</div>
+      <div className="flex flex-col justify-center items-center h-screen bg-gradient-to-br from-[#32012F] to-[#4A0245] p-4">
+        <div className="text-xl sm:text-2xl font-semibold text-white mb-4 text-center">Please Login First</div>
         <button 
           onClick={() => navigate('/login')}
           className="px-6 py-3 bg-white text-[#32012F] rounded-lg shadow-lg hover:bg-gray-100 transition-all"
@@ -166,39 +166,44 @@ const Writepage = () => {
         `}
       </style>
 
-      <div className="container mx-auto p-6 max-w-5xl">
-        <h1 className="text-4xl font-bold mb-8 text-white text-center">
+      <div className="container mx-auto px-3 sm:px-4 md:px-6 max-w-5xl py-4 sm:py-6">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-white text-center">
           Create Your Story
-          <div className="h-1 w-24 bg-white/50 mx-auto mt-2 rounded-full"></div>
+          <div className="h-1 w-16 sm:w-24 bg-white/50 mx-auto mt-2 rounded-full"></div>
         </h1>
 
-        <form onSubmit={handlesubmit} className="space-y-8 bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20">
+        <form onSubmit={handlesubmit} className="space-y-6 sm:space-y-8 bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-4 sm:p-6 md:p-8 border border-white/20">
+          {/* Cover Image Upload */}
           <div className="relative group">
+            <label className="block text-sm sm:text-base font-medium text-white/90 mb-3">Cover Image</label>
             <Upload type="image" setData={setCover}>
-              <button className="w-full h-48 border-2 border-dashed border-white/30 rounded-xl hover:border-white/50 transition-all duration-300 flex flex-col items-center justify-center bg-white/5 group-hover:bg-white/10">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-white/70 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <button className="w-full h-32 sm:h-40 md:h-48 border-2 border-dashed border-white/30 rounded-xl hover:border-white/50 transition-all duration-300 flex flex-col items-center justify-center bg-white/5 group-hover:bg-white/10">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 text-white/70 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                <span className="text-white/90 font-medium">Add Cover Image</span>
-                <span className="text-sm text-white/60 mt-1">Click or drag and drop</span>
+                <span className="text-white/90 font-medium text-sm sm:text-base text-center">Add Cover Image</span>
+                <span className="text-xs sm:text-sm text-white/60 mt-1 text-center">Click or drag and drop</span>
               </button>
             </Upload>
           </div>
 
+          {/* Title Input */}
           <div className="relative">
+            <label className="block text-sm sm:text-base font-medium text-white/90 mb-3">Title</label>
             <input
               type="text"
               placeholder="Your Story Title"
               name='title'
-              className="w-full p-4 border-b-2 border-white/20 bg-transparent rounded-t-lg focus:outline-none focus:border-white/50 text-3xl font-medium transition-all duration-300 text-white placeholder-white/50"
+              className="w-full p-3 sm:p-4 border-2 border-white/20 bg-white/5 rounded-xl focus:outline-none focus:border-white/50 text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium transition-all duration-300 text-white placeholder-white/50"
             />
           </div>
 
-          <div className="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/10">
-            <label className="text-sm font-medium text-white/80">Category:</label>
+          {/* Category Selection */}
+          <div className="bg-white/5 p-4 sm:p-6 rounded-xl border border-white/10">
+            <label className="block text-sm sm:text-base font-medium text-white/90 mb-3">Category</label>
             <select
               name="category"
-              className="p-2 rounded-lg bg-[#32012F] border border-white/20 focus:outline-none focus:border-white/50 transition-all duration-300 text-white"
+              className="w-full p-3 sm:p-4 rounded-lg bg-[#32012F] border-2 border-white/20 focus:outline-none focus:border-white/50 transition-all duration-300 text-white text-sm sm:text-base"
             >
               <option value="general">General</option>
               <option value="web design">Web Design</option>
@@ -209,51 +214,62 @@ const Writepage = () => {
             </select>
           </div>
 
+          {/* Description */}
           <div className="relative">
+            <label className="block text-sm sm:text-base font-medium text-white/90 mb-3">Description</label>
             <textarea
               name="desc"
               placeholder="Write a compelling description..."
-              className="w-full p-4 border border-white/20 bg-white/5 rounded-xl focus:outline-none focus:border-white/50 transition-all duration-300 resize-none h-32 text-white placeholder-white/50"
+              className="w-full p-3 sm:p-4 border-2 border-white/20 bg-white/5 rounded-xl focus:outline-none focus:border-white/50 transition-all duration-300 resize-none h-24 sm:h-32 text-white placeholder-white/50 text-sm sm:text-base"
             ></textarea>
           </div>
 
+          {/* Content Editor */}
           <div className="bg-white/5 rounded-xl shadow-sm border border-white/20">
-            <div className="flex gap-2 p-2 border-b border-white/10">
-              <Upload type="video" setData={setVideo}>
-                <button className="p-2 hover:bg-white/10 rounded-lg transition-all">
-                  <span className="text-2xl">📽️</span>
-                </button>
-              </Upload>
-              <Upload type="image" setData={setImage}>
-                <button className="p-2 hover:bg-white/10 rounded-lg transition-all">
-                  <span className="text-2xl">🖼️</span>
-                </button>
-              </Upload>
+            <div className="p-3 sm:p-4 border-b border-white/10">
+              <label className="block text-sm sm:text-base font-medium text-white/90 mb-3">Content</label>
+              <div className="flex gap-2">
+                <Upload type="video" setData={setVideo}>
+                  <button className="p-2 hover:bg-white/10 rounded-lg transition-all text-sm">
+                    <span className="text-lg sm:text-xl">📽️</span>
+                    <span className="ml-1 text-xs sm:text-sm">Video</span>
+                  </button>
+                </Upload>
+                <Upload type="image" setData={setImage}>
+                  <button className="p-2 hover:bg-white/10 rounded-lg transition-all text-sm">
+                    <span className="text-lg sm:text-xl">🖼️</span>
+                    <span className="ml-1 text-xs sm:text-sm">Image</span>
+                  </button>
+                </Upload>
+              </div>
             </div>
-            <ReactQuill 
-              theme="snow"
-              modules={quillModules}
-              formats={quillFormats}
-              className="rounded-b-xl h-[400px] font-white" 
-              value={value} 
-              onChange={setValue}
-              style={customStyles}
-            />
+            <div className="p-2">
+              <ReactQuill 
+                theme="snow"
+                modules={quillModules}
+                formats={quillFormats}
+                className="rounded-b-xl h-[250px] sm:h-[300px] md:h-[400px] font-white" 
+                value={value} 
+                onChange={setValue}
+                style={customStyles}
+              />
+            </div>
           </div>
 
-          <div className="flex justify-end">
+          {/* Submit Button */}
+          <div className="flex justify-center sm:justify-end pt-4">
             <button
               disabled={mutation.isPending}
-              className="px-8 py-3 bg-white text-[#32012F] rounded-xl hover:bg-gray-100 disabled:bg-white/50 transform hover:scale-105 transition-all duration-300 flex items-center gap-2 shadow-lg font-semibold"
+              className="w-full sm:w-auto px-6 sm:px-8 py-4 bg-white text-[#32012F] rounded-xl hover:bg-gray-100 disabled:bg-white/50 transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg font-semibold text-sm sm:text-base"
             >
               {mutation.isPending ? (
                 <>
-                  <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-[#32012F]"></div>
+                  <div className="animate-spin rounded-full h-4 w-4 sm:h-5 sm:w-5 border-t-2 border-b-2 border-[#32012F]"></div>
                   <span>Publishing...</span>
                 </>
               ) : (
                 <>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   <span>Publish Story</span>

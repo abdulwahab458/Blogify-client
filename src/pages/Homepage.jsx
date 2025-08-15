@@ -10,22 +10,22 @@ const Homepage = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className=' mt-4 flex flex-col gap-4'>
+    <div className='mt-4 flex flex-col gap-4 sm:gap-6 lg:gap-8'>
         {/* BREADCRUMB */}
       {/* <div className="flex gap-4">
         <NavLink to="/">Home</NavLink>
         <span>•</span>
         <span className="text-blue-800">Blogs and Articles</span>
       </div> */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 lg:gap-12">
       {/* INTRODUCTION  */}
           {/* titles */}
-          <div className="">
-          <h1 className="text-gray-100 text-3xl md:text-6xl lg:text-7xl font-extrabold text-center tracking-wide leading-tight drop-shadow-lg">
+          <div className="flex-1">
+          <h1 className="text-gray-100 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-extrabold text-center lg:text-left tracking-wide leading-tight drop-shadow-lg">
             Welcome to <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">Blogify</span>
           </h1>
 
-          <p className="mt-6 text-lg md:text-2xl italic font-serif text-gray-300 text-center tracking-wide">
+          <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl lg:text-2xl italic font-serif text-gray-300 text-center lg:text-left tracking-wide">
   "Words have power. Use them to <span className="text-blue-400 font-bold">inspire</span>,  
   <span className="text-pink-400 font-bold"> create</span>, and   
   <span className="text-purple-400 font-bold"> change the world</span>."
@@ -34,7 +34,7 @@ const Homepage = () => {
         </div>
         <NavLink 
           to="write" 
-          className="hidden md:block relative group"
+          className="hidden lg:block relative group self-center lg:self-start"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
@@ -110,6 +110,16 @@ const Homepage = () => {
             <div className="absolute inset-0 group-hover:animate-ripple rounded-full border border-white/20"></div>
           </button>
         </NavLink>
+        
+        {/* Mobile Write Button */}
+        <NavLink 
+          to="write" 
+          className="lg:hidden block w-full sm:w-auto"
+        >
+          <button className="w-full sm:w-auto py-4 px-8 rounded-2xl bg-gradient-to-r from-[#32012F] to-[#4B0245] text-white font-semibold text-lg hover:from-[#4B0245] hover:to-[#32012F] transition-all duration-300 transform hover:scale-105">
+            Start Writing
+          </button>
+        </NavLink>
       </div>
         {/* CATEGORIES */}
         <Maincategories/>
@@ -117,7 +127,7 @@ const Homepage = () => {
         <Featuredposts/>
         {/* POST LIST */}
       <div className="">
-        <h1 className="my-8 text-4xl text-gray-600">Recent Posts</h1>
+        <h1 className="my-6 sm:my-8 text-2xl sm:text-3xl lg:text-4xl text-gray-600">Recent Posts</h1>
         <Postlist/>
         
       </div>

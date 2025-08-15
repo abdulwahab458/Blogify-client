@@ -95,13 +95,13 @@ const Postmenuaction = ({ post }) => {
     }
     return (
         <div>
-            {user && (post.user.username === user.username || isAdmin) && <h1 className='mt-8 mb-4 text-lg font-bold '>Actions</h1>}
+            {user && (post.user.username === user.username || isAdmin) && <h1 className='mt-6 sm:mt-8 mb-3 sm:mb-4 text-base sm:text-lg font-bold text-gray-200'>Actions</h1>}
             {user && (post.user.username === user.username) &&
 
-                <div className="flex items-center gap-2 py-2 text-sm cursor-pointer" onClick={handlesave}>
+                <div className="flex items-center gap-2 py-2 text-xs sm:text-sm cursor-pointer hover:text-blue-400 transition-colors" onClick={handlesave}>
 
                     <svg
-                        className="h-[30px] w-[30px] cursor-pointer"
+                        className="h-6 w-6 sm:h-8 sm:w-8 cursor-pointer"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 384 512"
                         onClick={handlesave}
@@ -117,9 +117,9 @@ const Postmenuaction = ({ post }) => {
                 </div>}
 
             {isAdmin && ( 
-                <div className="flex items-center gap-2 py-2 text-sm cursor-pointer" onClick={handlefeature}>
+                <div className="flex items-center gap-2 py-2 text-xs sm:text-sm cursor-pointer hover:text-blue-400 transition-colors" onClick={handlefeature}>
                     <svg
-                        className="h-[30px] w-[30px] cursor-pointer"
+                        className="h-6 w-6 sm:h-8 sm:w-8 cursor-pointer"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 576 512"
                     >
@@ -131,8 +131,8 @@ const Postmenuaction = ({ post }) => {
                     <span>Feature</span>
                 </div>
             )}
-            {user && (post.user.username === user.username || isAdmin) && (<div className="flex items-center gap-2 py-2 text-sm cursor-pointer" onClick={handleDelete}>
-                <img src="/delete.svg" alt="" className='h-[30px] w-[30px]' />
+            {user && (post.user.username === user.username || isAdmin) && (<div className="flex items-center gap-2 py-2 text-xs sm:text-sm cursor-pointer hover:text-red-400 transition-colors" onClick={handleDelete}>
+                <img src="/delete.svg" alt="" className='h-6 w-6 sm:h-8 sm:w-8' />
                 <span className='text-[tomato]'>Delete this post </span>
             </div>
             )}
